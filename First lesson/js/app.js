@@ -13,13 +13,12 @@
 
 function extractOwnerId(postId) {
   const selector = `[data-id="${postId}"]`;
-  console.log(selector)
   const postEl = document.querySelector(selector);
   console.log(postEl)
-  var ownerId = postEl.getAttribute("data-type");
+  var ownerId = postEl.getAttribute("data-id");
   console.log(ownerId);
 
   return ownerId;
 };
-// console.log(extractOwnerId(1));
+console.log(extractOwnerId(1));
 // let id = document.querySelector('[data-id]');
