@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>
+  <span id="s1">span</span>
+  <span id="s2">span2</span>
+  <span id="s3">span3</span>
+  </div>
+
+    <script>
+      div = document.querySelector('div')
+      s1 = document.getElementById('s1');
+      s2 = document.getElementById('s2');
+      div.insertBefore (s2,s1)
+      //document.querySelector( "div" ).insertBefore (document.querySelector ("#s3"), document.querySelector ("#s2") );
+    </script>
+
+  </body>
+</html>

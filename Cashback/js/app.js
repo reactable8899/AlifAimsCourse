@@ -69,18 +69,23 @@ formEl.onsubmit = evt => {
       price,
     };
 
+    const check = 2;
+    const percent = 0.5;
     const listEl = document.createElement('li');
     listEl.dataset.purchaseId = purchase.id;
-    if (purchase.price * 0.5 / 100 < 0.01) {
-      listEl.textContent = `${purchase.name} на сумму ${purchase.price} с. (кэшбек - ${0} с.)`
+    if (purchase.price < check) {
+      listEl.textContent = `${purchase.name} на сумму ${purchase.price} с. (кэшбек - ${0} с.)`;
+      purchase.price = 0;
     } else {
-      listEl.textContent = `${purchase.name} на сумму ${purchase.price} с. (кэшбек - ${purchase.price * 0.5 / 100} с.)`;
+      listEl.textContent = `${purchase.name} на сумму ${purchase.price} с. (кэшбек - ${purchase.price * percent / 100} с.)`;
     }
     ulEl.prepend(listEl);
 
-    const sum = purchases.reduce((prev, curr) => prev + +(curr.price * 0.5 / 100), 0);
-    totalCash.textContent = `${sum} с.`;
     purchases.push(purchase);
+
+      const sum = purchases.reduce((prev, curr) => prev + +(curr.price * percent / 100), 0);
+      totalCash.textContent = `${sum} с.`;
+
     inputNameEl.focus();
     formEl.reset();
-}
+};

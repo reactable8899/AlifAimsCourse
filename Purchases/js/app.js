@@ -70,7 +70,7 @@ formEl.onsubmit = evt => {
     const purchase = {
       id:nextId++,
       name,
-      price,
+      price:parseInt(price),
     };
 
     const listEl = document.createElement('li');
@@ -94,19 +94,24 @@ formEl.onsubmit = evt => {
         for (let i = 0; i < purchases.length; i++) {
           if (purchases[i].price >= maxPrice) {
             maxPrice = purchases[i].price;
-            mostExpensive.textContent = `${purchases[i].name} ${maxPrice} с.`;
+            mostExpensive.textContent = `${purchase.name} на сумму ${purchase.price} с.`;
           }
         }
       }
     }
-
+    let tempId = 0;
+    console.log(purchases)
     buttonRemoveEl.addEventListener('click', function(event) {
       const task = event.target.parentNode;
       maxIndex = task.getAttribute('data-purchase-id');
-      console.log(maxIndex)
-      purchases.splice(maxIndex - 1, 1)
+      maxIndex = parseInt(maxIndex);
+      for (let j = 0; j < purchases.length; j++) {
+        if (purchases[j].id === maxIndex) {
+          tempId = j;
+        }
+      }
+      purchases.splice(tempId, 1);
       task.remove();
-      console.log(purchases)
       maxCheck();
     });
 
