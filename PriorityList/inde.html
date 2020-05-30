@@ -12,10 +12,15 @@
   </div>
 
     <script>
+
       div = document.querySelector('div')
       s1 = document.getElementById('s1');
       s2 = document.getElementById('s2');
+
+      let mas = [div,s1,s2];
+      console.log(mas)
       div.insertBefore (s2,s1)
+      console.log(mas)
       //document.querySelector( "div" ).insertBefore (document.querySelector ("#s3"), document.querySelector ("#s2") );
     </script>
 
